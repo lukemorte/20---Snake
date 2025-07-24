@@ -40,15 +40,16 @@ screen.title("Snake")
 screen.tracer(0)
 
 screen.listen()
-screen.onkey(key="w", fun=turn_up)
-screen.onkey(key="a", fun=turn_left)
-screen.onkey(key="s", fun=turn_down)
-screen.onkey(key="d", fun=turn_right)
 
-starting_positions = [(0, 0), (-TILE_SIZE, 0), (-TILE_SIZE * 2, 0)]
+screen.onkey(key="Up", fun=turn_up)
+screen.onkey(key="Left", fun=turn_left)
+screen.onkey(key="Down", fun=turn_down)
+screen.onkey(key="Right", fun=turn_right)
+
+segments_positions = [(0, 0), (-TILE_SIZE, 0), (-TILE_SIZE * 2, 0)]
 segments = []
 
-for position in starting_positions:
+for position in segments_positions:
     new_segment = Turtle("square")
     new_segment.penup()
     new_segment.color("white")
@@ -66,12 +67,14 @@ while game_is_on:
 
     previous_seg = segments[0]
 
-    for i in range(1, len(segments)):
-        coords = starting_positions[i - 1]
+    # odzadu iteruje všechny segmenty a přemístí každý iterovaný segment na pozici předchozího segmentu
+    for i in range(len(segments) - 1, 0, -1):
+        coords = segments_positions[i - 1]
         segments[i].goto(coords)
 
+    # iteruje všechny segmenty a provede update souřadnic v segments_positions
     for i, segment in enumerate(segments):
-        starting_positions[i] = segment.position()
+        segments_positions[i] = segment.position()
 
 
 
