@@ -15,14 +15,24 @@ class Snake():
 
     def create(self):
         """
-        draw basic snake from start_position
+        create basic snake from start_position
         """
         for position in STARTING_POSITION:
-            new_segment = Turtle("square")
-            new_segment.penup()
-            new_segment.color("white")
-            new_segment.goto(position)
-            self.segments.append(new_segment)
+            self.add_segment(position)
+
+    def add_segment(self, position):
+        new_segment = Turtle("square")
+        new_segment.penup()
+        new_segment.color("white")
+        new_segment.goto(position)
+        self.segments.append(new_segment)
+
+    def extend(self):
+        """
+        add new segment at the end of tail
+        """
+        position = self.segments[-1].position()
+        self.add_segment(position)
 
     def move(self):
         """
@@ -34,7 +44,7 @@ class Snake():
             self.segments[i].goto(coords)
 
         # posune první (head - nultý segment) segment na novou pozici podle aktuálního směru
-        self.head.forward(MOVE_DISTANCE)
+        self.head.forward(MOVE_DISTANCE)    
 
     # movement methods
 
