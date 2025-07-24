@@ -1,5 +1,6 @@
 from turtle import Screen
 from snake import Snake
+from food import Food
 import time
 
 
@@ -15,14 +16,15 @@ screen.tracer(0)
 
 # snake object
 snake = Snake()
+food = Food()
 
 
 # key listening
 screen.listen()
-screen.onkey(key="Up", fun=snake.turn_up)
-screen.onkey(key="Left", fun=snake.turn_left)
-screen.onkey(key="Down", fun=snake.turn_down)
-screen.onkey(key="Right", fun=snake.turn_right)
+screen.onkeypress(key="Up", fun=snake.turn_up)
+screen.onkeypress(key="Left", fun=snake.turn_left)
+screen.onkeypress(key="Down", fun=snake.turn_down)
+screen.onkeypress(key="Right", fun=snake.turn_right)
 
 
 # game logic
@@ -43,7 +45,7 @@ screen.exitonclick()
 
 # DONE 1: create snake body
 # DONE 2: move the snake
-
+# DONE 3: OOP
 # TODO 4: detect collision with food
 # TODO 5: create scoreboard
 # TODO 6: detect collision with wall
