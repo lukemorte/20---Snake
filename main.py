@@ -39,8 +39,10 @@ screen.bgcolor("black")
 screen.title("Snake")
 screen.tracer(0)
 
-screen.listen()
+# key listening
 
+
+screen.listen()
 screen.onkey(key="Up", fun=turn_up)
 screen.onkey(key="Left", fun=turn_left)
 screen.onkey(key="Down", fun=turn_down)
@@ -61,23 +63,15 @@ segments[0].color('red')
 game_is_on = True
 while game_is_on:
     screen.update()
-    time.sleep(0.1)
-
-    segments[0].forward(TILE_SIZE)
-
-    previous_seg = segments[0]
+    time.sleep(0.075)
 
     # odzadu iteruje všechny segmenty a přemístí každý iterovaný segment na pozici předchozího segmentu
     for i in range(len(segments) - 1, 0, -1):
-        coords = segments_positions[i - 1]
+        coords = segments[i - 1].position()
         segments[i].goto(coords)
 
-    # iteruje všechny segmenty a provede update souřadnic v segments_positions
-    for i, segment in enumerate(segments):
-        segments_positions[i] = segment.position()
-
-
-
+    # posune první (head - nultý segment) segment na novou pozici podle aktuálního směru
+    segments[0].forward(TILE_SIZE)
 
 
 # DONE 1: create snake body
