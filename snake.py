@@ -22,6 +22,7 @@ class Snake():
 
     def add_segment(self, position):
         new_segment = Turtle("square")
+        new_segment.shapesize(MOVE_DISTANCE / 20)
         new_segment.penup()
         new_segment.color("white")
         new_segment.goto(position)
@@ -44,7 +45,7 @@ class Snake():
             self.segments[i].goto(coords)
 
         # posune první (head - nultý segment) segment na novou pozici podle aktuálního směru
-        self.head.forward(MOVE_DISTANCE)    
+        self.head.forward(MOVE_DISTANCE)
 
     # movement methods
 
