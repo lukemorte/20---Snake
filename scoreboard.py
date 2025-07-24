@@ -1,5 +1,5 @@
 from turtle import Turtle
-from const import ALIGNMENT, FONT, SCREEN_HEIGHT
+from const import ALIGNMENT, FONT, FONT_GAME_OVER, SCREEN_HEIGHT
 
 
 class Scoreboard(Turtle):
@@ -20,3 +20,7 @@ class Scoreboard(Turtle):
         self.score += 1
         self.clear()
         self.update_scoreboard()
+        
+    def game_over(self):
+        self.goto(0, 0)
+        self.write("GAME OVER", False, align=ALIGNMENT, font=FONT_GAME_OVER)

@@ -12,5 +12,6 @@ DIR_RIGHT = 0
 
 ALIGNMENT = "center"
 FONT = ("Arial", 17, "normal")
+FONT_GAME_OVER = ("Arial", 30, "bold")
 
 FOOD_SIZE_KOEF = .5
