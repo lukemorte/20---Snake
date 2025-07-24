@@ -1,12 +1,5 @@
 from turtle import Turtle
-
-
-MOVE_DISTANCE = 20
-STARTING_POSITION = [(0, 0), (-MOVE_DISTANCE, 0), (-MOVE_DISTANCE * 2, 0)]
-DIR_UP = 90
-DIR_LEFT = 180
-DIR_DOWN = 270
-DIR_RIGHT = 0
+from const import MOVE_DISTANCE, STARTING_POSITION, DIR_DOWN, DIR_LEFT, DIR_RIGHT, DIR_UP
 
 
 class Snake():

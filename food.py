@@ -1,5 +1,6 @@
 from turtle import Turtle
 import random
+from const import FOOD_SIZE_KOEF, MOVE_DISTANCE, PADDING, SCREEN_WIDTH, SCREEN_HEIGHT
 
 
 class Food(Turtle):
@@ -8,9 +9,14 @@ class Food(Turtle):
         super().__init__()
         self.shape("circle")
         self.penup()
-        self.shapesize(stretch_len=0.5, stretch_wid=0.5)
+        self.shapesize(FOOD_SIZE_KOEF)
         self.color("blue")
         self.speed("fastest")
-        random_x = random.randint(-280, 280)
-        random_y = random.randint(-280, 280)
-        self.goto(random_x, random_y)
+        self.refresh()
+
+    def refresh(self):
+        x_tiles = int(((SCREEN_WIDTH / 2) / MOVE_DISTANCE) - PADDING)
+        y_tiles = int(((SCREEN_HEIGHT / 2) / MOVE_DISTANCE) - PADDING)
+        random_x = random.randint(-x_tiles, x_tiles)
+        random_y = random.randint(-y_tiles, y_tiles)
+        self.goto(random_x * MOVE_DISTANCE, random_y * MOVE_DISTANCE)
