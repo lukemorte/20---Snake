@@ -1,24 +1,35 @@
 from turtle import Turtle
 
 
+MOVE_DISTANCE = 20
+STARTING_POSITION = [(0, 0), (-MOVE_DISTANCE, 0), (-MOVE_DISTANCE * 2, 0)]
+DIR_UP = 90
+DIR_LEFT = 180
+DIR_DOWN = 270
+DIR_RIGHT = 0
+
+
 class Snake():
 
-    def __init__(self, tile_size):
+    def __init__(self):
         """
         Snake class constructor
         """
-        self.TILE_SIZE = tile_size
-        self.segments = []
-        starting_positions = [(0, 0), (-self.TILE_SIZE, 0), (-self.TILE_SIZE * 2, 0)]        
+        self.segments: list[Turtle] = []
+        self.create()
+        self.head = self.segments[0]
+        self.head.color('red')
 
-        for position in starting_positions:
+    def create(self):
+        """
+        draw basic snake from start_position
+        """
+        for position in STARTING_POSITION:
             new_segment = Turtle("square")
             new_segment.penup()
             new_segment.color("white")
             new_segment.goto(position)
             self.segments.append(new_segment)
-
-        self.segments[0].color('red')
 
     def move(self):
         """
@@ -30,16 +41,22 @@ class Snake():
             self.segments[i].goto(coords)
 
         # posune první (head - nultý segment) segment na novou pozici podle aktuálního směru
-        self.segments[0].forward(self.TILE_SIZE)
+        self.head.forward(MOVE_DISTANCE)
+
+    # movement methods
 
     def turn_up(self):
-        self.segments[0].setheading(90)
+        if self.head.heading() != DIR_DOWN:
+            self.head.setheading(DIR_UP)
 
     def turn_left(self):
-        self.segments[0].setheading(180)
+        if self.head.heading() != DIR_RIGHT:
+            self.head.setheading(DIR_LEFT)
 
     def turn_down(self):
-        self.segments[0].setheading(270)
+        if self.head.heading() != DIR_UP:
+            self.head.setheading(DIR_DOWN)
 
     def turn_right(self):
-        self.segments[0].setheading(0)
+        if self.head.heading() != DIR_LEFT:
+            self.head.setheading(DIR_RIGHT)

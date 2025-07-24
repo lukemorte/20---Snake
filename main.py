@@ -1,12 +1,6 @@
-from snake import Snake
 from turtle import Screen
+from snake import Snake
 import time
-
-
-# vars
-
-
-TILE_SIZE = 20
 
 
 # code
@@ -20,7 +14,7 @@ screen.tracer(0)
 
 
 # snake object
-snake = Snake(TILE_SIZE)
+snake = Snake()
 
 
 # key listening
