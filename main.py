@@ -2,8 +2,9 @@ from turtle import Screen
 from snake import Snake
 from food import Food
 from scoreboard import Scoreboard
+from grid import Grid
 import time
-from const import SCREEN_WIDTH, SCREEN_HEIGHT, MOVE_DISTANCE
+from const import SCREEN_WIDTH, SCREEN_HEIGHT, MOVE_DISTANCE, GRID_COLOR
 
 
 # screen
@@ -14,11 +15,12 @@ screen.bgcolor("black")
 screen.title("Snake")
 screen.tracer(0)
 
-# snake object
+# snake objects
 
 snake = Snake()
 food = Food()
 scoreboard = Scoreboard()
+grid = Grid(SCREEN_WIDTH, SCREEN_HEIGHT, MOVE_DISTANCE, GRID_COLOR)
 
 # key listening
 
