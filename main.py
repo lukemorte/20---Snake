@@ -19,8 +19,8 @@ screen.tracer(0)
 
 snake = Snake()
 food = Food()
-scoreboard = Scoreboard()
 grid = Grid(SCREEN_WIDTH, SCREEN_HEIGHT, MOVE_DISTANCE, GRID_COLOR)
+scoreboard = Scoreboard()
 
 # key listening
 
