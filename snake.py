@@ -9,9 +9,7 @@ class Snake():
         Snake class constructor
         """
         self.segments: list[Turtle] = []
-        self.create()
-        self.head = self.segments[0]
-        self.head.color('red')
+        self.reset()
 
     def create(self):
         """
@@ -27,6 +25,14 @@ class Snake():
         new_segment.color("white")
         new_segment.goto(position)
         self.segments.append(new_segment)
+
+    def reset(self):
+        if len(self.segments) > 0:
+            [segment.hideturtle() for segment in self.segments]
+            self.segments.clear()
+        self.create()
+        self.head = self.segments[0]
+        self.head.color('red')
 
     def extend(self):
         """

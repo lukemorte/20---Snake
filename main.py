@@ -50,14 +50,16 @@ while game_is_on:
     w = float((SCREEN_WIDTH - (MOVE_DISTANCE * 2)) / 2)
     h = float((SCREEN_HEIGHT - (MOVE_DISTANCE * 2)) / 2)
     if snake.head.xcor() > w or snake.head.xcor() < -w or snake.head.ycor() > h or snake.head.ycor() < -h:
-        game_is_on = False
-        scoreboard.game_over()
+        scoreboard.reset()
+        snake.reset()
+        time.sleep(.25)
 
     # detect collision with tail
     for segment in snake.segments[1:]:
         if snake.head.distance(segment) < 10:
-            game_is_on = False
-            scoreboard.game_over()
+            scoreboard.reset()
+            snake.reset()
+            time.sleep(.25)
 
 
 screen.exitonclick()
