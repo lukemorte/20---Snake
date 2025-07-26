@@ -17,3 +17,5 @@ FONT_GAME_OVER = ("Arial", 30, "bold")
 FOOD_SIZE_KOEF = .5
 
 GRID_COLOR = (.2, .2, .2)
+
+FILE_PATH = "data.txt"

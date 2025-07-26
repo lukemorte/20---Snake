@@ -1,5 +1,5 @@
 from turtle import Turtle
-from const import ALIGNMENT, FONT, FONT_GAME_OVER, SCREEN_HEIGHT
+from const import ALIGNMENT, FONT, FONT_GAME_OVER, SCREEN_HEIGHT, FILE_PATH
 
 
 class Scoreboard(Turtle):
@@ -30,12 +30,12 @@ class Scoreboard(Turtle):
         self.update_scoreboard()
 
     def get_highscore_from_file(self):
-        with open("data.txt", "r") as file:
+        with open(FILE_PATH, "r") as file:
             high_score = file.read()
             return int(high_score)
 
     def save_highsore_to_file(self, p_highscore):
-        with open("data.txt", "w") as file:
+        with open(FILE_PATH, "w") as file:
             file.write(str(p_highscore))
 
     # def game_over(self):
